@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hasantha Sadeepa</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#09090b',
+              surface: '#121215',
+              border: '#161f30',
+              silver: '#d4d4d8',
+              silverDark: '#71717a',
+              silverLight: '#f4f4f5'
+            }
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #000000;
+      color: #4848FF;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Silver metallic gradient effect */
+    .silver-text {
+      background: linear-gradient(135deg, #4A88F2 0%, #8181E8 50%, #71717a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .silver-border {
+      border-color: rgba(212, 212, 216, 0.2);
+    }
+
+    /* Fade-in scroll animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Toast notification for copying */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 50;
+    }
+
+    #toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brand-silver selection:text-brand-black">
+
+  <!-- Header / Navigation -->
+  <header class="w-full border-b border-brand-border backdrop-blur-md bg-brand-black/80 sticky top-0 z-40">
+    <div class="max-w-4xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="font-serif text-2xl font-semibold tracking-wider text-white hover:text-brand-silver transition-colors">
+        Hasantha Sadeepa<span class="text-brand-silverDark">.</span>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden sm:flex items-center space-x-8 text-sm font-mono tracking-wide text-zinc-400">
+        <a href="#about" class="hover:text-white transition-colors">/ About</a>
+        <a href="#skills" class="hover:text-white transition-colors">/ Skills</a>
+        <a href="#contact" class="hover:text-white transition-colors">/ Contact</a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="sm:hidden text-zinc-400 hover:text-white p-2" aria-label="Toggle Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Dropdown -->
+    <div id="mobile-menu" class="hidden sm:hidden border-b border-brand-border bg-brand-surface px-6 py-4 space-y-3 font-mono text-sm text-zinc-400">
+      <a href="#about" class="block hover:text-white py-1">/ About</a>
+      <a href="#skills" class="block hover:text-white py-1">/ Skills</a>
+      <a href="#contact" class="block hover:text-white py-1">/ Contact</a>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="max-w-4xl mx-auto px-6 py-16 flex-grow space-y-24">
+
+    <!-- Hero Section -->
+    <section class="space-y-6 fade-up">
+      <div class="inline-flex items-center space-x-2 border border-brand-border px-3 py-1 text-xs font-mono text-zinc-400 bg-brand-surface">
+        <span class="w-2 h-2 rounded-full bg-zinc-300 animate-pulse"></span>
+        <span>HELLO VISITOR</span>
+      </div>
+
+      <h1 class="font-serif text-5xl sm:text-7xl font-normal leading-tight tracking-tight silver-text">
+        Hello, I'm Hasantha Sadeepa.
+      </h1>
+
+      <p class="text-lg sm:text-xl text-zinc-400 font-light max-w-2xl leading-relaxed">
+        I am a student studying Combined Mathematics and a self-taught web developer. I enjoy creating simple, clean websites that work well on all devices.
+      </p>
+
+      <div class="pt-4 flex flex-wrap gap-4 text-sm font-mono">
+        <a href="#contact" class="border border-brand-silver text-brand-black bg-brand-silverLight px-6 py-3 hover:bg-zinc-300 transition-colors">
+          contact me
+        </a>
+        <a href="https://github.com/hasantha-dev" target="_blank" rel="noopener" class="border border-brand-border text-zinc-300 px-6 py-3 hover:border-zinc-400 hover:text-white transition-colors">
+          GitHub Profile
+        </a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="border-t border-brand-border pt-16 space-y-8 fade-up">
+      <div class="flex items-center space-x-4">
+        <span class="font-mono text-xs text-zinc-500">01</span>
+        <h2 class="font-serif text-3xl text-white">About Me</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-zinc-400 font-light leading-relaxed">
+        <div class="md:col-span-2 space-y-4">
+          <p>
+            I focus on learning web technologies and building simple digital experiences. My goal is to write clean, easy-to-understand code that loads fast and looks good.
+          </p>
+          <p>
+            When I am not coding, I spend my time studying mathematics , physics, it and learning how different web tools work under the hood.
+          </p>
+        </div>
+
+        <!-- Details Card -->
+        <div class="border border-brand-border bg-brand-surface p-6 space-y-4 text-xs font-mono">
+          <div>
+            <span class="text-zinc-500 block">STREAM</span>
+            <span class="text-zinc-200">Combined Mathematics</span>
+          </div>
+          <div class="border-t border-brand-border pt-3">
+            <span class="text-zinc-500 block">LOCATION</span>
+            <span class="text-zinc-200">Sri Lanka</span>
+          </div>
+          <div class="border-t border-brand-border pt-3">
+            <span class="text-zinc-500 block">INTERESTS</span>
+            <span class="text-zinc-200">Web Development, Math, UI Design,App building </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="border-t border-brand-border pt-16 space-y-8 fade-up">
+      <div class="flex items-center space-x-4">
+        <span class="font-mono text-xs text-zinc-500">02</span>
+        <h2 class="font-serif text-3xl text-white">Things I Learn & Use</h2>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm font-mono">
+        <div class="border border-brand-border bg-brand-surface p-4 text-center hover:border-zinc-500 transition-colors">
+          <span class="text-zinc-200 block">HTML5</span>
+          <span class="text-xs text-zinc-500 mt-1 block">Structure</span>
+        </div>
+        <div class="border border-brand-border bg-brand-surface p-4 text-center hover:border-zinc-500 transition-colors">
+          <span class="text-zinc-200 block">CSS3</span>
+          <span class="text-xs text-zinc-500 mt-1 block">Styling & Design</span>
+        </div>
+        <div class="border border-brand-border bg-brand-surface p-4 text-center hover:border-zinc-500 transition-colors">
+          <span class="text-zinc-200 block">JavaScript</span>
+          <span class="text-xs text-zinc-500 mt-1 block">Logic & Actions</span>
+        </div>
+        <div class="border border-brand-border bg-brand-surface p-4 text-center hover:border-zinc-500 transition-colors">
+          <span class="text-zinc-200 block">Git & GitHub</span>
+          <span class="text-xs text-zinc-500 mt-1 block">Code Hosting</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="border-t border-brand-border pt-16 space-y-8 fade-up">
+      <div class="flex items-center space-x-4">
+        <span class="font-mono text-xs text-zinc-500">03</span>
+        <h2 class="font-serif text-3xl text-white">Contact</h2>
+      </div>
+
+      <p class="text-zinc-400 max-w-xl font-light">
+        Feel free to reach out to me via email or follow my social profiles below.
+      </p>
+
+      <!-- Contact Links Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-sm">
+        
+        <!-- Email Link -->
+        <div class="border border-brand-border bg-brand-surface p-5 flex flex-col justify-between space-y-4 hover:border-zinc-400 transition-colors">
+          <div>
+            <span class="text-xs text-zinc-500 block">EMAIL</span>
+            <span class="text-zinc-200 text-xs break-all mt-1 block">hasantha20123@gmail.com</span>
+          </div>
+          <button onclick="copyEmail('hasantha20123@gmail.com')" class="text-xs text-left text-zinc-400 hover:text-white underline underline-offset-4">
+            Copy Email
+          </button>
+        </div>
+
+        <!-- GitHub Link -->
+        <a href="https://github.com/hasantha-dev" target="_blank" rel="noopener" class="border border-brand-border bg-brand-surface p-5 flex flex-col justify-between space-y-4 hover:border-zinc-400 transition-colors">
+          <div>
+            <span class="text-xs text-zinc-500 block">GITHUB</span>
+            <span class="text-zinc-200 mt-1 block">hasantha-dev</span>
+          </div>
+          <span class="text-xs text-zinc-400 hover:text-white">Visit Profile &rarr;</span>
+        </a>
+
+        <!-- TikTok Link -->
+        <a href="https://www.tiktok.com/@kurozen.real" target="_blank" rel="noopener" class="border border-brand-border bg-brand-surface p-5 flex flex-col justify-between space-y-4 hover:border-zinc-400 transition-colors">
+          <div>
+            <span class="text-xs text-zinc-500 block">TIKTOK</span>
+            <span class="text-zinc-200 mt-1 block">@kurozen.real</span>
+          </div>
+          <span class="text-xs text-zinc-400 hover:text-white">Visit Profile &rarr;</span>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-brand-border py-8 text-center text-xs font-mono text-zinc-500">
+    <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>&copy; <span id="year"></span> Hasantha Sadeepa. All rights reserved.</p>
+      <p class="text-zinc-600">Built with HTML, CSS & JavaScript</p>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="bg-zinc-200 text-brand-black px-4 py-2 font-mono text-xs shadow-lg border border-white">
+    Email copied to clipboard!
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Copy Email to Clipboard Function
+    function copyEmail(email) {
+      navigator.clipboard.writeText(email).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2500);
+      });
+    }
+
+    // Scroll Fade-in Animation (Intersection Observer)
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-up').forEach(element => {
+      observer.observe(element);
+    });
+  </script>
+
+</body>
+</html>
